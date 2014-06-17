@@ -1,0 +1,39 @@
+﻿@model RestaurantMenu.Models.SearchModel
+@{
+    ViewBag.Title = "Busqueda de Restaurantes";
+}
+
+<h2>Busqueda de Restaurantes</h2>
+
+@using (Html.BeginForm()) {     
+    @Html.ValidationSummary(true)
+    
+    <div class="editor-field">
+        @Html.EditorFor(model => model.SearchText)
+    </div>
+    <input type="submit" value="Buscar"/>
+}
+
+<table>
+    <thead>
+        <tr>
+            <td style="font-weight:bold">
+                Restaurante
+            </td>
+            <td style="font-weight:bold">
+                Categoria
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach(var item in Model.Restaurants){
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RestaurantCategory.Name)
+            </td>
+        </tr> 
+    }
+</table>

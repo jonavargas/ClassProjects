@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Titulo aquí</title>
+
+	</head>
+	<body>
+		
+<script typeof="text/JavaScript">
+// Check browser support
+if (typeof(Storage) != "undefined")
+  {
+  // Store
+  localStorage.setItem("lastname", "Smith");
+  // Retrieve
+  document.getElementById("result").innerHTML=localStorage.getItem("lastname");
+  }
+else
+  {
+  document.getElementById("result").innerHTML="Sorry, your browser does not support Web Storage...";
+  }
+</script>	
+		<nav>
+			<ul>
+				<li>			
+					<a href="#">HTML</a> 
+				</li>
+				<li>			
+					<a href="#">CSS</a> 
+				</li>
+				<li>			
+					<a href="#">JavaScript</a> 
+				</li>
+				<li>			
+					<a href="#">jQuery</a> 
+				</li>
+			</ul>
+		</nav>
+		<section>
+			<article>				
+				<header>
+    				<h1>Internet Explorer 9</h1>
+    				<p><time pubdate datetime="2011-03-15"></time></p>
+  				</header>
+		  		<p>The World Wide Fund for Nature (WWF) is an international organization working on issues regarding the conservation, research and restoration of the environment, formerly named the World Wildlife Fund. WWF was founded in 1961.
+		  		</p>
+			</article>		 
+		</section>
+		<section>
+			<h1>FIFA</h1>
+			<p>The World Wide Fund for Nature (WWF) is an international organization working on issues regarding the conservation, research and restoration of the environment, formerly named the World Wildlife Fund. WWF was founded in 1961.
+			</p>
+		  	<figure>
+			  <img src="http://www.w3schools.com/images/w3logotest2.png" 
+			  alt="The Pulpit Rock Alt" width="280" height="32">
+			  <figcaption>Fig.1 - The Pulpit Rock, Norway.</figcaption>
+			</figure>
+
+<div id="result"></div>
+		
+		</section>
+		<form action="demo_form.asp">
+  			Select your favorite color: 
+  			<input type="color" name="favcolor"><br>
+  			 Birthday: <input type="date" name="bday"><br/>
+  			 Birthday (date and time): <input type="datetime-local" name="bdaytime"><br/>
+  			 E-mail: <input type="email" name="email"><br/>
+  			 Quantity (between 1 and 5): <input type="number" name="quantity" min="1" max="5">
+  			<input type="submit"><br/>
+  			Points: 0<input type="range" name="points" min="1" max="10">10
+
+		</form>
+		<aside>
+			<h4>Epcot Center</h4>
+			<p>The Epcot Center is a theme park in Disney World, Florida.</p>
+		</aside>
+		<footer>
+  			<p>Posted by: Hege Refsnes</p>
+  			<p><time pubdate datetime="2012-03-01"></time></p>
+		</footer>
+	</body>
+</html>
