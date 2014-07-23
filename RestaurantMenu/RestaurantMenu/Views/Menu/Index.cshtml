@@ -1,0 +1,40 @@
+﻿@model RestaurantMenu.Models.MenuModel
+@{
+    ViewBag.Title = "DetalleMenu";
+}
+
+<h2>DetalleMenu</h2>
+<legend>Restaurant</legend>
+
+<div class="display-label">
+    @Html.Label(Model.name)
+    @Html.Label(Model.category)
+    @Html.Label(Model.telefono)
+</div>
+
+<center><h2>Menu</h2> </center>
+
+<table>
+
+    @foreach (var item in Model.meals)
+    {
+        <tr>
+            <td>
+                <input type="text">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MealType.Name)
+            </td>
+        </tr>
+    }
+
+</table>

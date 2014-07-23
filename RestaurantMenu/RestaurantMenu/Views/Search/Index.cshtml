@@ -29,7 +29,7 @@
     @foreach(var item in Model.Restaurants){
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.ActionLink(item.Name, "Index", "Menu", new {id= item.Id}, null)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.RestaurantCategory.Name)
