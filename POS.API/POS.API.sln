@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POS.API", "POS.API\POS.API.csproj", "{CE219F88-9DC0-41CD-83C2-64A46B9DC093}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POS.Dto", "POS.Dto\POS.Dto.csproj", "{327C88CD-ED12-4619-8B71-8DC2E8A14C4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POS.Data", "POS.Data\POS.Data.csproj", "{0C7897A6-E3D5-4B8E-96D7-4A39A232E296}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE219F88-9DC0-41CD-83C2-64A46B9DC093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE219F88-9DC0-41CD-83C2-64A46B9DC093}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE219F88-9DC0-41CD-83C2-64A46B9DC093}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE219F88-9DC0-41CD-83C2-64A46B9DC093}.Release|Any CPU.Build.0 = Release|Any CPU
+		{327C88CD-ED12-4619-8B71-8DC2E8A14C4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{327C88CD-ED12-4619-8B71-8DC2E8A14C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{327C88CD-ED12-4619-8B71-8DC2E8A14C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{327C88CD-ED12-4619-8B71-8DC2E8A14C4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C7897A6-E3D5-4B8E-96D7-4A39A232E296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C7897A6-E3D5-4B8E-96D7-4A39A232E296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C7897A6-E3D5-4B8E-96D7-4A39A232E296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C7897A6-E3D5-4B8E-96D7-4A39A232E296}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
