@@ -15,7 +15,7 @@ namespace POS.API
         {
 
             var response = new BrandResponse();
-            response.Result = "1 Products was found";
+            response.Result = "1 Brand was found";
 
             try
             {
@@ -23,7 +23,7 @@ namespace POS.API
                 {
                     var brand = GetById(request.Id.Value);
                     response.Brand.Add(brand);
-                    response.Result = "1 bus was faud";
+                    response.Result = "All Brands was found";
 
                 }
                 else

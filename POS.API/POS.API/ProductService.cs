@@ -23,12 +23,12 @@ namespace POS.API
                 {                    
                     var products = GetById(request.Id.Value);
                     response.Products.Add(products);
-                    response.Result = "1 Products was found";
+                    response.Result = "1 Product was found";
                 }
                 else 
                 {
                     response.Products = GetAll();
-                    response.Result = "1 Products was found";
+                    response.Result = "All Products was found";
                 }
             }
             catch (Exception)

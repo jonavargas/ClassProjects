@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CE219F88-9DC0-41CD-83C2-64A46B9DC093}</ProjectGuid>
+    <ProjectGuid>{C915FB3F-C1BA-4852-8B20-46DBD2068A17}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>POS.API</RootNamespace>
-    <AssemblyName>POS.API</AssemblyName>
+    <RootNamespace>RestaurantMenu.API</RootNamespace>
+    <AssemblyName>RestaurantMenu.API</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -38,10 +38,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="ServiceStack">
       <HintPath>..\packages\ServiceStack.4.0.23\lib\net40\ServiceStack.dll</HintPath>
@@ -58,7 +54,6 @@
     <Reference Include="ServiceStack.Text">
       <HintPath>..\packages\ServiceStack.Text.4.0.23\lib\net40\ServiceStack.Text.dll</HintPath>
     </Reference>
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -78,22 +73,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppHost.cs" />
-    <Compile Include="BrandServices.cs" />
-    <Compile Include="CategoryService.cs" />
-    <Compile Include="ClientService.cs" />
-    <Compile Include="EmployeeService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SupplierService.cs" />
+    <Compile Include="RestaurantService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -105,13 +93,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\POS.Data\POS.Data.csproj">
-      <Project>{0c7897a6-e3d5-4b8e-96d7-4a39a232e296}</Project>
-      <Name>POS.Data</Name>
+    <ProjectReference Include="..\RestaurantMenu.Data\RestaurantMenu.Data.csproj">
+      <Project>{b87ee5b9-0b8d-494a-a7fd-74ff49055a33}</Project>
+      <Name>RestaurantMenu.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\POS.Dto\POS.Dto.csproj">
-      <Project>{327c88cd-ed12-4619-8b71-8dc2e8a14c4e}</Project>
-      <Name>POS.Dto</Name>
+    <ProjectReference Include="..\RestaurantMenu.Dto\RestaurantMenu.Dto.csproj">
+      <Project>{56b152e8-67bb-410c-a2d4-4532a0e56db3}</Project>
+      <Name>RestaurantMenu.Dto</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -127,9 +115,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>13395</DevelopmentServerPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:13395/</IISUrl>
+          <IISUrl>http://localhost:57113/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

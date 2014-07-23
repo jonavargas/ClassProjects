@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RestaurantMenuModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="RestaurantMenuModelStoreContainer">
+          <EntitySet Name="Meal" EntityType="RestaurantMenuModel.Store.Meal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MealType" EntityType="RestaurantMenuModel.Store.MealType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Restaurant" EntityType="RestaurantMenuModel.Store.Restaurant" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RestaurantCategory" EntityType="RestaurantMenuModel.Store.RestaurantCategory" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="fk_Meal_MealTypeId" Association="RestaurantMenuModel.Store.fk_Meal_MealTypeId">
+            <End Role="MealType" EntitySet="MealType" />
+            <End Role="Meal" EntitySet="Meal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Meal_RestaurantId" Association="RestaurantMenuModel.Store.fk_Meal_RestaurantId">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="Meal" EntitySet="Meal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Restaurant_RestaurantCategoryId" Association="RestaurantMenuModel.Store.fk_Restaurant_RestaurantCategoryId">
+            <End Role="RestaurantCategory" EntitySet="RestaurantCategory" />
+            <End Role="Restaurant" EntitySet="Restaurant" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Meal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="Price" Type="decimal" Nullable="false" />
+          <Property Name="Description" Type="text" />
+          <Property Name="MealTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MealType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="150" />
+          <Property Name="Description" Type="text" />
+        </EntityType>
+        <EntityType Name="Restaurant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="RestaurantCategoryId" Type="int" Nullable="false" />
+          <Property Name="Address" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="Telephone" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="RestaurantCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="Description" Type="text" />
+        </EntityType>
+        <Association Name="fk_Meal_MealTypeId">
+          <End Role="MealType" Type="RestaurantMenuModel.Store.MealType" Multiplicity="1" />
+          <End Role="Meal" Type="RestaurantMenuModel.Store.Meal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MealType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Meal">
+              <PropertyRef Name="MealTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Meal_RestaurantId">
+          <End Role="Restaurant" Type="RestaurantMenuModel.Store.Restaurant" Multiplicity="1" />
+          <End Role="Meal" Type="RestaurantMenuModel.Store.Meal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Meal">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Restaurant_RestaurantCategoryId">
+          <End Role="RestaurantCategory" Type="RestaurantMenuModel.Store.RestaurantCategory" Multiplicity="1" />
+          <End Role="Restaurant" Type="RestaurantMenuModel.Store.Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RestaurantCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="RestaurantCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RestaurantMenuModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RestaurantMenuEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Meals" EntityType="RestaurantMenuModel.Meal" />
+          <EntitySet Name="MealTypes" EntityType="RestaurantMenuModel.MealType" />
+          <EntitySet Name="Restaurants" EntityType="RestaurantMenuModel.Restaurant" />
+          <EntitySet Name="RestaurantCategories" EntityType="RestaurantMenuModel.RestaurantCategory" />
+          <AssociationSet Name="fk_Meal_MealTypeId" Association="RestaurantMenuModel.fk_Meal_MealTypeId">
+            <End Role="MealType" EntitySet="MealTypes" />
+            <End Role="Meal" EntitySet="Meals" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Meal_RestaurantId" Association="RestaurantMenuModel.fk_Meal_RestaurantId">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="Meal" EntitySet="Meals" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Restaurant_RestaurantCategoryId" Association="RestaurantMenuModel.fk_Restaurant_RestaurantCategoryId">
+            <End Role="RestaurantCategory" EntitySet="RestaurantCategories" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Meal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="MealTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MealType" Relationship="RestaurantMenuModel.fk_Meal_MealTypeId" FromRole="Meal" ToRole="MealType" />
+          <NavigationProperty Name="Restaurant" Relationship="RestaurantMenuModel.fk_Meal_RestaurantId" FromRole="Meal" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="MealType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Meals" Relationship="RestaurantMenuModel.fk_Meal_MealTypeId" FromRole="MealType" ToRole="Meal" />
+        </EntityType>
+        <EntityType Name="Restaurant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="RestaurantCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Telephone" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Meals" Relationship="RestaurantMenuModel.fk_Meal_RestaurantId" FromRole="Restaurant" ToRole="Meal" />
+          <NavigationProperty Name="RestaurantCategory" Relationship="RestaurantMenuModel.fk_Restaurant_RestaurantCategoryId" FromRole="Restaurant" ToRole="RestaurantCategory" />
+        </EntityType>
+        <EntityType Name="RestaurantCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Restaurants" Relationship="RestaurantMenuModel.fk_Restaurant_RestaurantCategoryId" FromRole="RestaurantCategory" ToRole="Restaurant" />
+        </EntityType>
+        <Association Name="fk_Meal_MealTypeId">
+          <End Role="MealType" Type="RestaurantMenuModel.MealType" Multiplicity="1" />
+          <End Role="Meal" Type="RestaurantMenuModel.Meal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MealType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Meal">
+              <PropertyRef Name="MealTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Meal_RestaurantId">
+          <End Role="Restaurant" Type="RestaurantMenuModel.Restaurant" Multiplicity="1" />
+          <End Role="Meal" Type="RestaurantMenuModel.Meal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Meal">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Restaurant_RestaurantCategoryId">
+          <End Role="RestaurantCategory" Type="RestaurantMenuModel.RestaurantCategory" Multiplicity="1" />
+          <End Role="Restaurant" Type="RestaurantMenuModel.Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RestaurantCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="RestaurantCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RestaurantMenuModelStoreContainer" CdmEntityContainer="RestaurantMenuEntities">
+          <EntitySetMapping Name="Meals">
+            <EntityTypeMapping TypeName="RestaurantMenuModel.Meal">
+              <MappingFragment StoreEntitySet="Meal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MealTypeId" ColumnName="MealTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MealTypes">
+            <EntityTypeMapping TypeName="RestaurantMenuModel.MealType">
+              <MappingFragment StoreEntitySet="MealType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Restaurants">
+            <EntityTypeMapping TypeName="RestaurantMenuModel.Restaurant">
+              <MappingFragment StoreEntitySet="Restaurant">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RestaurantCategoryId" ColumnName="RestaurantCategoryId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantCategories">
+            <EntityTypeMapping TypeName="RestaurantMenuModel.RestaurantCategory">
+              <MappingFragment StoreEntitySet="RestaurantCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

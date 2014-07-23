@@ -26,7 +26,7 @@ namespace POS.API
                 else
                 {
                     response.Supplier = GetAll();
-                    response.Result = "1 Supplier was found";
+                    response.Result = "All Suppliers was found";
                 }
             }
             catch (Exception)
